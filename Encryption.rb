@@ -1,14 +1,4 @@
-def codepoints(string)
-	encrypted_array = string.codepoints.to_a
-	print encrypted_array
-	
-	#encrypted_array.each do |x|
-		#encrypted_array[x] = encrypted_array + 3
-	#end
-	
-	#print encrypted_array
-end
-
+=begin
 class Encrypt
 	
 	def initialize(code, string)
@@ -16,36 +6,45 @@ class Encrypt
 		@string = string
 		@encrypted = []
 		@default = []
+		@message = ""
 	end
 
 	def default_value
 		@string.each_byte do |c|
 			@default.push(c)
 		end
-		print @default
 	end	
 
 	def to_byte
 		@string.each_byte do |c|
 			@encrypted.push(c + @code)
 		end
-		print @encrypted
 	end 
 
 	def to_chr
-		n = @encrypted.length
-		#n.times do |i|
-			#@encrypted.push(i.chr)
-		#end
-		print @encrypted[0].chr
+		to_byte if @encrypted.empty?
 
-		#@encrypted.each do |x|
-			#@encrypted.push(x.chr)
-		#end
-		#print @encrypted
+		message = @encrypted.map(&:chr)
+		message.join
 	end
 	
+	def join
+		@message.join
+	end
+end
+=end
+
+
+def Encrypt(code, string)
+	array = []
+	
+	# Converts the string to byte values and pushes to array
+	string.each_byte do |c|
+		array.push(c + code)
+	end
+
+	encrypted_message = array.map(&:chr)
+	encrypted_message.join
 end
 
-goop = Encrypt.new(2, "hello")
-goop.to_chr
+print Encrypt(2, "hello, world! My name is Evan Peterson and this is my encryption algorithm")

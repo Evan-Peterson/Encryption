@@ -47,4 +47,15 @@ def Encrypt(code, string)
 	encrypted_message.join
 end
 
-print Encrypt(2, "hello, world! My name is Evan Peterson and this is my encryption algorithm")
+def Decrypt(code, string)
+	array = []
+
+	string.each_byte do |c|
+		array.push(c - code)
+	end
+	decrypted_message = array.map(&:chr)
+	decrypted_message.join
+end
+
+#print Encrypt(2, "hello, world! My name is Evan Peterson and this is my encryption algorithm")
+print Decrypt(2, 'jgnnq."yqtnf#"O{"pcog"ku"Gxcp"Rgvgtuqp"cpf"vjku"ku"o{"gpet{rvkqp"cniqtkvjo')
